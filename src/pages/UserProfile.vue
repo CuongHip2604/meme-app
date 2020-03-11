@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- HEADER -->
-    <app-header/>
+    
     <main>
       <div class="ass1-login">
         <div class="ass1-login__content">
@@ -32,19 +31,15 @@
         </div>
       </div>
     </main>
-    <app-footer/>
+    
   </div>
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader'
-import AppFooter from '../components/AppFooter'
+
 export default {
   name: "user-profile",
-  components: {
-    AppHeader,
-    AppFooter
-  }
+  
 };
 </script>
 

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <!-- HEADER -->
-    <app-header/>
-    <!--END-->
+    
     <main>
       <div class="ass1-login">
         <div class="ass1-login__content">
@@ -36,12 +34,10 @@
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader'
+
 export default {
   name: "change-password",
-  components: {
-    AppHeader
-  }
+  
 };
 </script>
 

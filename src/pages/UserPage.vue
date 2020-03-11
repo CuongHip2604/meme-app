@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- HEADER -->
-    <app-header/>
+  
     <!-- MAIN -->
     <main>
       <div class="container">
@@ -215,12 +214,10 @@
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader'
+
 export default {
   name: "user-page",
-  components: {
-    AppHeader
-  }
+  
 };
 </script>
 

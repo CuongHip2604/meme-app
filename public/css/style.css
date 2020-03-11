@@ -960,7 +960,8 @@ select.form-control:focus {
   font-weight: 500;
 }
 .ass1-section__image-info p {
-  color: 63616#b;
+  color: 
+  #b63616;
 }
 .ass1-section__image-info span {
   color: #9fa3ac;
@@ -2186,6 +2187,7 @@ select.form-control:focus {
 }
 .ass1-header .ass1-logo {
   margin-right: 16px;
+  margin-bottom: 15px;
 }
 .ass1-header__btn-dropdown {
   margin-right: 30px;

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- HEADER -->
-    <app-header/>
     <!-- MAIN -->
     <main>
       <div class="container">
@@ -114,12 +112,10 @@
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader'
+
 export default {
   name: "post-upload",
-  components: {
-    AppHeader
-  }
+  
 };
 </script>
 

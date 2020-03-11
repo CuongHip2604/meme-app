@@ -13,14 +13,14 @@ import UserPage from './pages/UserPage'
 import UserProfile from './pages/UserProfile'
 
 const routes = [
-    { path: '/', name: 'Homme', component: Home },
-    { path: '/change-password', name: 'ChangePassword', component: ChangePassword },
-    { path: '/login', name: 'Login', component: Login },
-    { path: '/register', name: 'Register', component: Register },
-    { path: '/post-detail', name: 'PostDetail', component: PostDetail },
-    { path: '/upload', name: 'PostUpload', component: PostUpload },
-    { path: '/user-page', name: 'UserPage', component: UserPage },
-    { path: '/user-profile', name: 'UserProfile', component: UserProfile },
+    { path: '/', name: 'home', component: Home },
+    { path: '/change-password', name: 'change-password', component: ChangePassword },
+    { path: '/login', name: 'login', component: Login },
+    { path: '/register', name: 'register', component: Register },
+    { path: '/post-detail/:id', name: 'post-detail', component: PostDetail },
+    { path: '/upload', name: 'post-upload', component: PostUpload },
+    { path: '/user-page', name: 'user-page', component: UserPage },
+    { path: '/user-profile', name: 'user-profile', component: UserProfile },
 ]
 
 const router = new VueRouter({

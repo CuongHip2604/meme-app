@@ -6,13 +6,26 @@ import user from './moduleUser'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-    state: {},
+    
+    state: {
+        isLoading: false
+    },
     getters: {},
-    mutations: {},
-    actions: {},
+    mutations: {
+        SET_LOADING: (state, loading = false) => {
+            state.isLoading = loading;
+        }
+    },
+    actions: {
+        setLoading({commit}, loading = false ){
+            commit('SET_LOADING', loading);
+        }
+    },
     modules: {
-        post,
-        user
+        postModule: post,
+        userModule: user
     }
 
 })
+
+export default store;
