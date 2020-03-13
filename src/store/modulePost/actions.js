@@ -47,19 +47,25 @@ export default {
         }
     },
 
-    async getPostDetailById({ commit }, postid) {
+    async getPostDetailById({ commit, dispatch }, postid) {
         commit('SET_LOADING', true);
         try {
             var result = await axois.get(`/post/post.php?postid=${postid}`);
             commit('SET_LOADING', false);
+            
             if(result.data.status === 200){
-                commit('SET_POST_DETAIL', result.data.data.post);
+
+                
+                await dispatch('getUserById', result.data.data.post.USERID);
+                
+                commit('SET_POST_DETAIL', result.data.data);
+                return {
+                    ok: true,
+                    data: result.data.data,
+                    error: null
+                }
             }
-            return {
-                ok: true,
-                data: result.data.data,
-                error: null
-            }
+            
         } catch (error) {
             commit('SET_LOADING', false);
             return {
@@ -67,5 +73,7 @@ export default {
                 error: error.message
             }
         }
-    }
+    },
+
+    
 }

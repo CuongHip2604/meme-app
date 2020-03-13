@@ -6,14 +6,18 @@
         <div class="row">
           <div class="col-lg-8">
             <!--section-->
-            <div class="ass1-section__list">
-              <post-list/>
-              <post-comment-add/>
-              <post-comments/>
+            <div class="ass1-section__list" v-if="getDataPostDetail && getDataPostDetail.post">
+              <div class="ass1-section">
+                <post-item :post='getDataPostDetail.post'/>
+
+              </div>
+
+              <post-comment-add />
+              <post-comments />
             </div>
           </div>
           <div class="col-lg-4">
-            <sidebar/>
+            <sidebar />
           </div>
         </div>
       </div>
@@ -22,38 +26,46 @@
 </template>
 
 <script>
-import Sidebar from '../components/Sidebar'
-import PostList from '../components/PostList'
-import PostCommentAdd from '../components/PostCommentAdd'
-import PostComments from '../components/PostComments'
-import { mapActions } from 'vuex'
+import Sidebar from "../components/Sidebar";
+import PostItem from "../components/PostItem";
+import PostCommentAdd from "../components/PostCommentAdd";
+import PostComments from "../components/PostComments";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "post-detail",
-  data(){
+  data() {
     return {
       postid: this.$route.params.id
-    }
+    };
   },
   watch: {
-    '$route' (to){
+    $route(to) {
       this.postid = to.params.id;
       this.fetchDataPostDetail();
     }
   },
+  computed: {
+    ...mapGetters(["getDataPostDetail"])
+  },
   components: {
     Sidebar,
-    PostList,
+    PostItem,
     PostCommentAdd,
     PostComments
   },
-  created(){
+  created() {
     this.fetchDataPostDetail();
   },
   methods: {
-    ...mapActions(['getPostDetailById']),
-    fetchDataPostDetail(){
-      this.getPostDetailById(this.postid);
-    }
+    ...mapActions(["getPostDetailById"]),
+    fetchDataPostDetail() {
+      this.getPostDetailById(this.postid).then(res => {
+        if (!res.ok) {
+          this.$router.push("/");
+        }
+      });
+    },
+    
   }
 };
 </script>

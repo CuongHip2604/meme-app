@@ -6,8 +6,7 @@
         <!--sections-->
         <div class="row">
           <div class="col-lg-8">
-            <post-list/>
-            
+            <post-list />
           </div>
           <div class="col-lg-4">
             <sidebar />
@@ -38,9 +37,9 @@ export default {
       }
     }
   },
-  
+
   methods: {
-    ...mapActions(["getListPostHasPaging",'getListPostByCategory'])
+    ...mapActions(["getListPostHasPaging", "getListPostByCategory"])
   },
   created() {
     var tagIndex = this.$route.query.tagIndex;
