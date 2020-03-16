@@ -6,6 +6,15 @@ export default {
     },
     SET_LOGIN_INFO(state, { token = '', user = null }) {
         localStorage.setItem(CONFIG_ACCESS_TOKEN, token);
+        state[CONFIG_ACCESS_TOKEN] = token;
         state.currentUser = user;
+    },
+    SET_LOGOUT(state) {
+        state[CONFIG_ACCESS_TOKEN] = '';
+        state.currentUser = null;
+        localStorage.removeItem(CONFIG_ACCESS_TOKEN);
+    },
+    SET_USER_POSTS(state, { posts, userid }) {
+        Vue.set(state.posts, userid, posts);
     }
 }

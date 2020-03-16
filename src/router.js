@@ -19,8 +19,8 @@ const routes = [
     { path: '/register', name: 'register', component: Register },
     { path: '/post-detail/:id', name: 'post-detail', component: PostDetail },
     { path: '/upload', name: 'post-upload', component: PostUpload },
-    { path: '/user-page', name: 'user-page', component: UserPage },
-    { path: '/user-profile', name: 'user-profile', component: UserProfile },
+    { path: '/user/:id', name: 'user-page', component: UserPage },
+    { path: '/user/:id/profile', name: 'user-profile', component: UserProfile },
 ]
 
 const router = new VueRouter({

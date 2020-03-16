@@ -15,7 +15,7 @@
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
 import Loading from "./components/Loading";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "App",
   components: {
@@ -38,6 +38,12 @@ export default {
       return true;
     }
   },
+  methods: {
+    ...mapActions(['checkLogin'])
+  },
+  created(){
+    this.checkLogin();
+  }
 };
 </script>
 
