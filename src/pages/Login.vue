@@ -21,7 +21,7 @@
                 <a href="#">Copy</a>
               </div>
               <div class="ass1-login__send">
-                <a href="dang-ky.html">Đăng ký một tài khoản</a>
+                <router-link to="/register">Đăng ký một tài khoản</router-link>
                 <button type="submit" class="ass1-btn">Đăng nhập</button>
               </div>
             </form>
@@ -34,6 +34,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { NOTI_LOGIN } from "../constants";
 export default {
   name: "login",
   data() {
@@ -53,11 +54,22 @@ export default {
       this.login(data).then(res => {
         if (!res.ok) {
           if (typeof res.error === "string") {
-            alert(res.error);
+            this.$notify({
+              group: "noti",
+              type: "error",
+              title: "Error!",
+              text: res.error
+            });
           } else {
-            alert(res.error.join(" "));
+            this.$notify({
+              group: "noti",
+              type: "error",
+              title: "Error!",
+              text: res.error.join(" ")
+            });
           }
         } else {
+          this.$notify(NOTI_LOGIN);
           this.$router.push("/");
         }
       });

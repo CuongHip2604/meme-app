@@ -7,5 +7,8 @@ export default {
     },
     SET_POST_DETAIL(state, data){
         state.postDetail = data;
+    },
+    PUST_LIST_COMMENT(state, comment){
+        state.postDetail.comments.push(comment);
     }
 }

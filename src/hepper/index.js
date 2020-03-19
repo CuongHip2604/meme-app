@@ -22,22 +22,48 @@ const removeVietnameseFromString = (str) => {
     return str;
 }
 
-const replaceAll = (originStr, search, replacement) => {
+const replaceAll = function(originStr, search, replacement) {
     var taget = originStr;
-    return taget.toLowerCase().split(search.toLowerCase().join(replacement));
+    return taget.toLowerCase().split(search.toLowerCase()).join(replacement);
 }
 const parseJwt = (token) => {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
+    try {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
 
-    return JSON.parse(jsonPayload);
+        return JSON.parse(jsonPayload);
+    } catch (error) {
+        return null;
+    }
 };
 
+const checkImageFile = (file) => {
+    let fileName = file.name;
+    let type = file.type;
+
+    if(fileName.lastIndexOf('.') == -1){
+        return false;
+    }
+
+    if(type.lastIndexOf('png') !== -1 || type.lastIndexOf('jpeg') !== -1 || type.lastIndexOf('jpg') !== -1 || type.lastIndexOf('gif') !== -1){
+        return true
+    }
+    return false;
+}
+
+const checkImageUrl = (imageUrl) => {
+    if(!imageUrl.match(/^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)$/i)){
+        return false;
+    }
+    return true;
+}
 export {
     removeVietnameseFromString,
     replaceAll,
-    parseJwt
+    parseJwt,
+    checkImageFile,
+    checkImageUrl
 }

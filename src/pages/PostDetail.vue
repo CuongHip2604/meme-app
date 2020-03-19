@@ -8,12 +8,11 @@
             <!--section-->
             <div class="ass1-section__list" v-if="getDataPostDetail && getDataPostDetail.post">
               <div class="ass1-section">
-                <post-item :post='getDataPostDetail.post'/>
-
+                <post-item :post="getDataPostDetail.post" />
               </div>
 
               <post-comment-add />
-              <post-comments />
+              <post-comments :comments="getDataPostDetail.comments"/>
             </div>
           </div>
           <div class="col-lg-4">
@@ -64,8 +63,7 @@ export default {
           this.$router.push("/");
         }
       });
-    },
-    
+    }
   }
 };
 </script>

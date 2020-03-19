@@ -11,16 +11,66 @@ import PostDetail from './pages/PostDetail'
 import PostUpload from './pages/PostUpload'
 import UserPage from './pages/UserPage'
 import UserProfile from './pages/UserProfile'
+import Search from './pages/Search'
 
+import {IfAuthenticated, IfNotAuthenticated} from './dist/authenticate'
 const routes = [
-    { path: '/', name: 'home', component: Home },
-    { path: '/change-password', name: 'change-password', component: ChangePassword },
-    { path: '/login', name: 'login', component: Login },
-    { path: '/register', name: 'register', component: Register },
-    { path: '/post-detail/:id', name: 'post-detail', component: PostDetail },
-    { path: '/upload', name: 'post-upload', component: PostUpload },
-    { path: '/user/:id', name: 'user-page', component: UserPage },
-    { path: '/user/:id/profile', name: 'user-profile', component: UserProfile },
+    {
+        path: '/', 
+        name: 'home', 
+        component: Home,
+        
+    },
+    { 
+        path: '/user/:id/password',
+        name: 'change-password', 
+        component: ChangePassword,
+        beforeEnter : IfAuthenticated
+
+    },
+    { 
+        path: '/login', 
+        name: 'login', 
+        component: Login,
+        beforeEnter : IfNotAuthenticated
+    },
+    { 
+        path: '/register', 
+        name: 'register', 
+        component: Register,
+        beforeEnter : IfNotAuthenticated 
+    },
+    { 
+        path: '/post-detail/:id', 
+        name: 'post-detail', 
+        component: PostDetail
+    },
+    { 
+        path: '/upload', 
+        name: 'post-upload', 
+        component: PostUpload,
+        beforeEnter : IfAuthenticated
+
+    },
+    { 
+        path: '/user/:id', 
+        name: 'user-page', 
+        component: UserPage,
+        beforeEnter : IfAuthenticated
+
+    },
+    { 
+        path: '/user/:id/profile',
+        name: 'user-profile', 
+        component: UserProfile,
+        beforeEnter : IfAuthenticated
+
+    },
+    {
+        path: '/search',
+        name: 'search',
+        component: Search
+    }
 ]
 
 const router = new VueRouter({

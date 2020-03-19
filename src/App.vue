@@ -1,13 +1,14 @@
 <template>
   <div id="app">
+    <app-header v-if="isRenderHeader" />
     <main>
       <div class="container">
-        <app-header v-if="isRenderHeader" />
         <router-view />
-        <app-footer v-if="isRenderFooter" />
       </div>
-      <loading :class="{ show : isLoading }" />
     </main>
+    <app-footer v-if="isRenderFooter" />
+    <loading :class="{ show : isLoading }" />
+    <notifications group="noti" position="bottom left" :duration='3000' :width='400' />
   </div>
 </template>
 

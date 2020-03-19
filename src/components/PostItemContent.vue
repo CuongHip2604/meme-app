@@ -11,8 +11,8 @@
 </template>
 
 <script>
-
-export default {
+import { replaceAll } from "../hepper";
+export default { 
   name: "post-item-content",
   data() {
     return {
@@ -41,7 +41,7 @@ export default {
     },
     formatPostContent() {
       if (this.querySearch) {
-        return this.replaceAll(
+        return replaceAll(
           this.post.post_content,
           this.querySearch,
           `<mark>${this.querySearch}</mark>`

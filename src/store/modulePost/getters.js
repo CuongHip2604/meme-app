@@ -12,7 +12,8 @@ export default {
                     fullname: user.fullname,
                     profilepicture: user.profilepicture
                 },
-                categories: state.postDetail.categories
+                categories: state.postDetail.categories,
+                comments: state.postDetail.comments
             }
             
             return data;

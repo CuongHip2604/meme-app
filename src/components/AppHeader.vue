@@ -12,12 +12,12 @@
         <router-link v-if="!isLogin" to="/login" class="ass1-header__btn-upload ass1-btn">Login</router-link>
 
         <!-- if already login -->
-        <div class="wapper-user" v-else>
-          <router-link :to="getLink" class="user-header">
+        <div class="wapper-user" v-else-if="currentUser">
+          <router-link :to="{ name: 'user-page', params: { id: currentUser.USERID } }" class="user-header">
             <span class="avatar">
               <img :src="getAvatar" alt />
             </span>
-            <span class="email">{{currentUser.email}}</span>
+            <span class="email">{{currentUser.fullname}}</span>
           </router-link>
           <div class="logout" @click="handleLogout()">Logout</div>
         </div>
@@ -46,9 +46,7 @@ export default {
 
       return "images/default-user-image.png";
     },
-    getLink() {
-      return { name: "user-page", params: { id: this.currentUser.USERID } };
-    }
+    
   },
   mounted() {
     $(".ass1-header__menu li > a").click(function() {

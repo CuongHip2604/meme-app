@@ -16,5 +16,8 @@ export default {
     },
     SET_USER_POSTS(state, { posts, userid }) {
         Vue.set(state.posts, userid, posts);
+    },
+    SET_CURRENT_USER(state, user){
+        state.currentUser = user;
     }
 }

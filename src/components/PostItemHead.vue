@@ -1,7 +1,7 @@
 <template>
   <div class="ass1-section__head">
-    <router-link to="/post-detail" class="ass1-section__avatar ass1-avatar">
-      <img :src="getAvatar" alt />
+    <router-link :to="getUserLink" class="ass1-section__avatar ass1-avatar" >
+      <img :src="getAvatar" style="border-radius: 10%" alt />
     </router-link>
     <div>
       <router-link
@@ -71,5 +71,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 </style>
